@@ -21,7 +21,7 @@ struct HabituallyView: View {
                         } label: {
                             VStack(alignment: .leading) {
                                 habitTitle(habit)
-                                habitDaysCompleted(habit)
+                                timeInvested(in: habit)
                             }
                         }
                     }
@@ -36,7 +36,14 @@ struct HabituallyView: View {
                 }
                 .sheet(isPresented: $showAddSheet) {
                     // Add a Habit
-                    Text("Add a Habit at index \(viewModel.habits.count).")
+                    Button("Add a Habit at index \(viewModel.habits.count).") {
+                        let coding = Habit(habitType: .coding, description: "I like coding!", timePerformed: 0, title: "Coding", daysCompleted: 0)
+                        let gym = Habit(habitType: .exercise, description: "", timePerformed: 30, title: "Gymming", daysCompleted: 30)
+                        let drawing = Habit(habitType: .drawing, description: "", timePerformed: 10, title: "Drawing", daysCompleted: 15)
+                        let instrument = Habit(habitType: .instrument, description: "I like playing the guitar a lot!", timePerformed: 60, title: "Playing the Guitar", daysCompleted: 600)
+                        
+                        viewModel.add([coding, gym, instrument, drawing])
+                    }
                 }
             }
             .navigationTitle("Habitually!")
@@ -48,8 +55,10 @@ struct HabituallyView: View {
         Text(habit.title).font(.title2)
     }
     
-    func habitDaysCompleted(_ habit: Habit) -> some View {
-        Text("Days Completed: \(habit.daysCompleted)").font(.caption).opacity(0.6)
+    func timeInvested(in habit: Habit) -> some View {
+        Text("\(habit.investedTimeInHoursInString) invested")
+            .opacity(0.6)
+            .font(.caption)
     }
 }
 

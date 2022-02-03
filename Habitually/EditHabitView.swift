@@ -38,11 +38,11 @@ struct EditHabitView: View {
             }
             .navigationTitle(habit.title)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel", role: .cancel) { }
                 }
                
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
                         viewModel.replace(habit)
                     }
