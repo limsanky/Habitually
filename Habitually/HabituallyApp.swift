@@ -13,7 +13,7 @@ struct HabituallyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HabituallyView(habits: habits)
+            HabituallyView(viewModel: habits)
         }
     }
 }
