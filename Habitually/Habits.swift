@@ -13,11 +13,11 @@ class Habits: ObservableObject {
     func indexOf(_ habit: Habit) -> Int? { habits.firstIndex { $0.id == habit.id } }
     
     
-    
-    
     // MARK: - Intent(s)
     
     func add(_ habit: Habit) { habits.append(habit) }
+    
+    func add(_ habitsFrom: [Habit]) { habitsFrom.forEach { habits.append($0) } }
     
     func remove(atOffsets: IndexSet) { habits.remove(atOffsets: atOffsets) }
     
