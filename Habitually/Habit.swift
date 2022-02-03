@@ -19,6 +19,13 @@ struct Habit: Codable, Identifiable {
         timePerformed * Double(daysCompleted) / 60.0
     }
     
+    var investedTimeInHoursInString: String {
+        var retText = investedTimeInHours.formatted(.number.precision(.fractionLength(2))).description + " hr"
+        if investedTimeInHours != 1 { retText += "s" }
+        
+        return retText
+    }
+    
     var daysCompletedInString: String {
         var retText = "\(daysCompleted) day"
         if daysCompleted != 1 { retText += "s" }
