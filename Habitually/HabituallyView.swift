@@ -41,6 +41,7 @@ struct HabituallyView: View {
             }
             .navigationTitle("Habitually!")
         }
+        .environmentObject(viewModel)
     }
     
     func habitTitle(_ habit: Habit) -> some View {
