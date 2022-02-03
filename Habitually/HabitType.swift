@@ -7,7 +7,9 @@
 
 import Foundation
 
-enum HabitType: String, Codable {
+enum HabitType: String, Codable, CaseIterable, Identifiable {
+    var id: Self { self }
+    
     case exercise
     case reading
     case writing
