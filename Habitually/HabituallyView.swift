@@ -57,10 +57,10 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let dummyHabits = Habits()
         
-        let coding = Habit(habitType: .coding, timePerformed: 0, title: "Coding", daysCompleted: 0)
-        let gym = Habit(habitType: .exercise, timePerformed: 30, title: "Gymming", daysCompleted: 30)
-        let drawing = Habit(habitType: .drawing, timePerformed: 10, title: "Drawing", daysCompleted: 15)
-        let instrument = Habit(habitType: .instrument, timePerformed: 60, title: "Playing the Guitar", daysCompleted: 600)
+        let coding = Habit(habitType: .coding, description: "I like coding!", timePerformed: 0, title: "Coding", daysCompleted: 0)
+        let gym = Habit(habitType: .exercise, description: "", timePerformed: 30, title: "Gymming", daysCompleted: 30)
+        let drawing = Habit(habitType: .drawing, description: "", timePerformed: 10, title: "Drawing", daysCompleted: 15)
+        let instrument = Habit(habitType: .instrument, description: "I like playing the guitar a lot!", timePerformed: 60, title: "Playing the Guitar", daysCompleted: 600)
         
         dummyHabits.add([coding, gym, instrument, drawing])
         
