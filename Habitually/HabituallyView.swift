@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HabituallyView: View {
     @ObservedObject var viewModel: Habits
+    @State private var showAddSheet = false
     
     var body: some View {
         NavigationView {
@@ -28,10 +29,14 @@ struct HabituallyView: View {
                 }
                 .toolbar {
                     Button {
-                        // Add a Habit
+                        showAddSheet = true
                     } label: {
                         Image(systemName: "plus.circle")
                     }
+                }
+                .sheet(isPresented: $showAddSheet) {
+                    // Add a Habit
+                    Text("Add a Habit at index \(viewModel.habits.count).")
                 }
             }
             .navigationTitle("Habitually!")
