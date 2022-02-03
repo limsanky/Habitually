@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct HabituallyApp: App {
     @StateObject var habits = Habits()
-    
+        
     var body: some Scene {
         WindowGroup {
             HabituallyView(viewModel: habits)
