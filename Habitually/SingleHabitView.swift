@@ -12,39 +12,39 @@ struct SingleHabitView: View {
     var habit: Habit
     
     var body: some View {
-        NavigationView {
-            Form {
-                if habit.description != "" {
-                    Section("Description") {
-                        Text(habit.description)
-                    }
-                }
-                
-                Section("Type") {
-                    Text(String(habit.habitType.rawValue))
-                }
-                
-                Section("Minutes Performed Per Day") {
-                    Text(habit.timePerformed, format: .number)
-                }
-                
-                Section("Days Performed") {
-                    Text("\(habit.daysCompleted)")
-                }
-                
-                Section("Total Hours invested in habit") {
-                    investedTime
+        Form {
+            if habit.description != "" {
+                Section("Description") {
+                    Text(habit.description)
                 }
             }
-            .navigationTitle(habit.title)
-            .sheet(isPresented: $editMode) {
-                // Edit Habit Sheet is presented
+            
+            Section("Type") {
+                Text(String(habit.habitType.rawValue.capitalized))
             }
-            .toolbar {
-                Button("Edit") {
-                    withAnimation {
-                        editMode = true
-                    }
+            
+            Section("Minutes Performed Per Day") {
+                Text(habit.timePerformed, format: .number)
+            }
+            
+            Section("Days Performed") {
+                Text("\(habit.daysCompleted)")
+            }
+            
+            Section("Total Hours invested in habit") {
+                investedTime
+            }
+        }
+        .navigationTitle(habit.title)
+//            .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $editMode) {
+            // Edit Habit Sheet is presented
+            EditHabitView(habit: habit)
+        }
+        .toolbar {
+            Button("Edit") {
+                withAnimation {
+                    editMode = true
                 }
             }
         }
