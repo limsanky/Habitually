@@ -15,6 +15,42 @@ class Habits: ObservableObject {
     
     // MARK: - Intent(s)
     
+    func replace(_ habit: Habit) {
+        if let index = indexOf(habit) {
+            habits[index] = habit
+        }
+    }
+    
+    func changeDescription(_ desc: String, of habit: Habit) {
+        if let index = indexOf(habit) {
+            habits[index].description = desc
+        }
+    }
+    
+    func changeTitle(_ title: String, of habit: Habit) {
+        if let index = indexOf(habit) {
+            habits[index].title = title
+        }
+    }
+    
+    func changeType(of habit: Habit, to type: HabitType) {
+        if let index = indexOf(habit) {
+            habits[index].habitType = type
+        }
+    }
+    
+    func changeTimePerformed(_ time: Double, of habit: Habit) {
+        if let index = indexOf(habit) {
+            habits[index].timePerformed = time
+        }
+    }
+    
+    func changeDays(_ days: Int, of habit: Habit) {
+        if let index = indexOf(habit) {
+            habits[index].daysCompleted = days
+        }
+    }
+    
     func add(_ habit: Habit) { habits.append(habit) }
     
     func add(_ habitsFrom: [Habit]) { habitsFrom.forEach { habits.append($0) } }
