@@ -17,66 +17,72 @@ struct EditHabitView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section("Title") {
-                    habitTitle
-                }
+                titleSection
                 
-                Section("Description") {
-                    habitDesc
-                }
+                descSection
                 
-                Section("Type") {
-                    typePicker
-                }
+                typeSection
                 
-                Section("Time Interval") {
-                    timeInterval
-                }
+                timeSection
                 
-                Section("Days Performed") {
-                    daysPerformedStepper
-                }
+                daysSection
             }
             .navigationTitle(habit.title)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", role: .cancel) {
-                        dismiss()
-                    }
-                }
+                ToolbarItem(placement: .cancellationAction) { cancel }
                
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
-                        viewModel.replace(habit)
-                        dismiss()
-                    }
-                }
+                ToolbarItem(placement: .confirmationAction) { save }
             }
         }
     }
     
-    var daysPerformedStepper: some View {
+    private var cancel: some View {
+        Button("Cancel", role: .cancel) {
+            dismiss()
+        }
+    }
+    
+    private var save: some View {
+        Button("Save") {
+            viewModel.replace(habit)
+            dismiss()
+        }
+    }
+    
+    private var daysPerformedStepper: some View {
         Stepper(habit.daysCompletedInString, value: $habit.daysCompleted, in: 0...360, step: 1)
             .onSubmit {
                 viewModel.changeDays(habit.daysCompleted, of: habit)
             }
     }
     
-    var habitTitle: some View {
+    private var daysSection: some View {
+        Section("Days Performed") { daysPerformedStepper }
+    }
+    
+    private var habitTitle: some View {
         TextEditor(text: $habit.title)
             .onSubmit {
                 viewModel.changeTitle(habit.title, of: habit)
             }
     }
     
-    var habitDesc: some View {
+    private var titleSection: some View {
+        Section("Title") { habitTitle }
+    }
+    
+    private var habitDesc: some View {
         TextEditor(text: $habit.description)
             .onSubmit {
                 viewModel.changeDescription(habit.description, of: habit)
             }
     }
     
-    var typePicker: some View {
+    private var descSection: some View {
+        Section("Description") { habitDesc }
+    }
+    
+    private var typePicker: some View {
         Picker("Type of Habit", selection: $habit.habitType) {
             ForEach(HabitType.allCases) { Text($0.rawValue.capitalized) }
         }
@@ -85,11 +91,19 @@ struct EditHabitView: View {
         }
     }
     
-    var timeInterval: some View {
+    private var typeSection: some View {
+        Section("Type") { typePicker }
+    }
+    
+    private var timeInterval: some View {
         Stepper("\(habit.timePerformed, format: .number) mins", value: $habit.timePerformed, in: 0...360, step: 15)
             .onSubmit {
                 viewModel.changeTimePerformed(habit.timePerformed, of: habit)
             }
+    }
+    
+    private var timeSection: some View {
+        Section("Time Interval") { timeInterval }
     }
 }
 
