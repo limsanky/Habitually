@@ -8,7 +8,24 @@
 import Foundation
 
 class Habits: ObservableObject {
-    @Published private(set) var habits = [Habit]()
+    @Published private(set) var habits = [Habit]() {
+        didSet {
+            if let encodedData = try? JSONEncoder().encode(habits) {
+                UserDefaults.standard.set(encodedData, forKey: "Habits")
+            }
+        }
+    }
+    
+    init() {
+        if let data = UserDefaults.standard.data(forKey: "Habits") {
+            if let decodedHabits = try? JSONDecoder().decode([Habit].self, from: data) {
+                habits = decodedHabits
+                return
+            }
+        }
+        
+        habits = []
+    }
     
     func indexOf(_ habit: Habit) -> Int? { habits.firstIndex { $0.id == habit.id } }
     
