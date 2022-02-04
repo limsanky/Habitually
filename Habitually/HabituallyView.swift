@@ -28,11 +28,7 @@ struct HabituallyView: View {
                     .onDelete(perform: viewModel.remove)
                 }
                 .toolbar {
-                    Button {
-                        showAddSheet = true
-                    } label: {
-                        Image(systemName: "plus")
-                    }
+                    addButton
                 }
                 .sheet(isPresented: $showAddSheet) {
                     AddHabitView()
@@ -43,11 +39,19 @@ struct HabituallyView: View {
         .environmentObject(viewModel)
     }
     
-    func habitTitle(_ habit: Habit) -> some View {
+    private var addButton: some View {
+        Button {
+            showAddSheet = true
+        } label: {
+            Image(systemName: "plus")
+        }
+    }
+    
+    private func habitTitle(_ habit: Habit) -> some View {
         Text(habit.title).font(.title2)
     }
     
-    func timeInvested(in habit: Habit) -> some View {
+    private func timeInvested(in habit: Habit) -> some View {
         Text("\(habit.investedTimeInHoursInString) invested")
             .opacity(0.6)
             .font(.caption)
