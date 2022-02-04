@@ -13,14 +13,14 @@ struct SingleHabitView: View {
     
     var body: some View {
         Form {
+            Section("Type") {
+                Text(String(habit.habitType.rawValue.capitalized))
+            }
+            
             if habit.description != "" {
                 Section("Description") {
                     Text(habit.description)
                 }
-            }
-            
-            Section("Type") {
-                Text(String(habit.habitType.rawValue.capitalized))
             }
             
             Section("Minutes Performed Per Day") {
