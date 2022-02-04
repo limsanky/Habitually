@@ -31,19 +31,11 @@ struct HabituallyView: View {
                     Button {
                         showAddSheet = true
                     } label: {
-                        Image(systemName: "plus.circle")
+                        Image(systemName: "plus")
                     }
                 }
                 .sheet(isPresented: $showAddSheet) {
-                    // Add a Habit
-                    Button("Add a Habit at index \(viewModel.habits.count).") {
-                        let coding = Habit(habitType: .coding, description: "I like coding!", timePerformed: 0, title: "Coding", daysCompleted: 0)
-                        let gym = Habit(habitType: .exercise, description: "", timePerformed: 30, title: "Gymming", daysCompleted: 30)
-                        let drawing = Habit(habitType: .drawing, description: "", timePerformed: 10, title: "Drawing", daysCompleted: 15)
-                        let instrument = Habit(habitType: .instrument, description: "I like playing the guitar a lot!", timePerformed: 60, title: "Playing the Guitar", daysCompleted: 600)
-                        
-                        viewModel.add([coding, gym, instrument, drawing])
-                    }
+                    AddHabitView()
                 }
             }
             .navigationTitle("Habitually!")
