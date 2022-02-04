@@ -16,6 +16,7 @@
 		965626EA27ABCB180070EA0C /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965626E927ABCB180070EA0C /* Habit.swift */; };
 		965626EC27ABCD660070EA0C /* SingleHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965626EB27ABCD660070EA0C /* SingleHabitView.swift */; };
 		965626F027AC398D0070EA0C /* EditHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965626EF27AC398D0070EA0C /* EditHabitView.swift */; };
+		9657B96727AD08A9003FA654 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9657B96627AD08A9003FA654 /* AddHabitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		965626E927ABCB180070EA0C /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		965626EB27ABCD660070EA0C /* SingleHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleHabitView.swift; sourceTree = "<group>"; };
 		965626EF27AC398D0070EA0C /* EditHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitView.swift; sourceTree = "<group>"; };
+		9657B96627AD08A9003FA654 /* AddHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				965626E927ABCB180070EA0C /* Habit.swift */,
 				965626E727ABCB060070EA0C /* HabitType.swift */,
 				965626D927ABC8520070EA0C /* HabituallyView.swift */,
+				9657B96627AD08A9003FA654 /* AddHabitView.swift */,
 				965626EB27ABCD660070EA0C /* SingleHabitView.swift */,
 				965626EF27AC398D0070EA0C /* EditHabitView.swift */,
 				965626DB27ABC8560070EA0C /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				965626E827ABCB060070EA0C /* HabitType.swift in Sources */,
+				9657B96727AD08A9003FA654 /* AddHabitView.swift in Sources */,
 				965626EA27ABCB180070EA0C /* Habit.swift in Sources */,
 				965626DA27ABC8520070EA0C /* HabituallyView.swift in Sources */,
 				965626F027AC398D0070EA0C /* EditHabitView.swift in Sources */,
