@@ -13,45 +13,55 @@ struct SingleHabitView: View {
     
     var body: some View {
         Form {
-            Section("Type") {
-                Text(String(habit.habitType.rawValue.capitalized))
-            }
+            title
             
-            if habit.description != "" {
-                Section("Description") {
-                    Text(habit.description)
-                }
-            }
+            if habit.description != "" { desc }
             
-            Section("Minutes Performed Per Day") {
-                Text(habit.timePerformed, format: .number)
-            }
+            mins
             
-            Section("Days Performed") {
-                Text("\(habit.daysCompleted)")
-            }
+            days
             
-            Section("Total Hours invested in habit") {
-                investedTime
-            }
+            time
         }
         .navigationTitle(habit.title)
-//            .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $editMode) {
-            // Edit Habit Sheet is presented
             EditHabitView(habit: habit)
         }
         .toolbar {
-            Button("Edit") {
-                withAnimation {
-                    editMode = true
-                }
+            edit
+        }
+    }
+    
+    private var edit: some View {
+        Button("Edit") {
+            withAnimation {
+                editMode = true
             }
         }
     }
     
-    var investedTime: some View {
+    private var time: some View {
+        Section("Total Hours invested in habit") { investedTime }
+    }
+    
+    private var investedTime: some View {
         Text("\(habit.investedTimeInHours, format: .number.precision(.fractionLength(2)))")
+    }
+    
+    private var days: some View {
+        Section("Days Performed") { Text("\(habit.daysCompleted)") }
+    }
+    
+    private var mins: some View {
+        Section("Minutes Performed Per Day") { Text(habit.timePerformed, format: .number) }
+    }
+    
+    private var desc: some View {
+        Section("Description") { Text(habit.description) }
+    }
+    
+    private var title: some View {
+        Section("Type") { Text(String(habit.habitType.rawValue.capitalized)) }
     }
 }
 
