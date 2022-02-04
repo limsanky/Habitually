@@ -10,6 +10,7 @@ import SwiftUI
 struct EditHabitView: View {
     @EnvironmentObject var viewModel: Habits
     @State var habit: Habit
+    @Environment(\.dismiss) var dismiss
     
     @State private var desc = ""
     
@@ -39,12 +40,15 @@ struct EditHabitView: View {
             .navigationTitle(habit.title)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", role: .cancel) { }
+                    Button("Cancel", role: .cancel) {
+                        dismiss()
+                    }
                 }
                
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
                         viewModel.replace(habit)
+                        dismiss()
                     }
                 }
             }
